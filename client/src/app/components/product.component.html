@@ -1,0 +1,61 @@
+<h2>Product Manager</h2>
+
+<form (ngSubmit)="save()">
+  <div *ngIf="selectedProduct; else newForm">
+    <input
+      type="text"
+      [(ngModel)]="selectedProduct.name"
+      name="name"
+      placeholder="Name"
+      required
+    />
+    <input
+      type="text"
+      [(ngModel)]="selectedProduct.description"
+      name="description"
+      placeholder="Description"
+      required
+    />
+    <input
+      type="number"
+      [(ngModel)]="selectedProduct.price"
+      name="price"
+      placeholder="Price"
+      required
+    />
+    <button type="submit">Update</button>
+  </div>
+
+  <ng-template #newForm>
+    <input
+      type="text"
+      [(ngModel)]="newProduct.name"
+      name="name"
+      placeholder="Name"
+      required
+    />
+    <input
+      type="text"
+      [(ngModel)]="newProduct.description"
+      name="description"
+      placeholder="Description"
+      required
+    />
+    <input
+      type="number"
+      [(ngModel)]="newProduct.price"
+      name="price"
+      placeholder="Price"
+      required
+    />
+    <button type="submit">Add</button>
+  </ng-template>
+</form>
+
+<ul>
+  <li *ngFor="let product of products">
+    {{ product.name }} - {{ product.price | currency }}
+    <button (click)="edit(product)">Edit</button>
+    <button (click)="delete(product.id!)">Delete</button>
+  </li>
+</ul>
