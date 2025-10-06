@@ -7,7 +7,8 @@ import { Product } from '../models/product.model';
   providedIn: 'root'
 })
 export class ProductServices {
-  private baseUrl = 'https://localhost:5266/api/products';
+  //private baseUrl = 'https://localhost:5266/api/products';
+  private baseUrl = 'http://localhost:5266/api/products';
   private _products = signal<Product[]>([]);
 
   products = computed(() => this._products());
